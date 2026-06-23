@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Retro NES Emulator - Burger Time</title>
     
-    <!-- FIX: Updated script source using the correct modern file directory distribution path -->
+    <!-- Load the modern, official JSNES library distribution engine -->
     <script type="text/javascript" src="https://unpkg.com/jsnes@2/dist/jsnes.min.js"></script>
 
     <style>
@@ -17,11 +17,19 @@
             margin: 0;
             padding: 20px;
         }
-        #nes-canvas {
+        /* Style the designated game screen box area wrapper */
+        #nes-container {
+            margin: 20px auto;
             border: 4px solid #444;
             box-shadow: 0 10px 25px rgba(0,0,0,0.5);
             background: black;
-            max-width: 100%;
+            width: 512px;
+            height: 480px;
+        }
+        /* Forces the emulator's internal graphics canvas to fit your styled box cleanly */
+        #nes-container canvas {
+            width: 100% !important;
+            height: 100% !important;
         }
         .controls-info {
             margin-top: 15px;
@@ -33,16 +41,17 @@
 <body>
 
     <h1>NES Emulator</h1>
-    <p>Click the screen below to focus controls before playing!</p>
+    <p>Click inside the screen black box to focus your keys before playing!</p>
 
-    <!-- The game screen canvas -->
-    <canvas id="nes-canvas" width="256" height="240" style="width: 512px; height: 480px;"></canvas>
+    <!-- The exact target container box where the script constructs the canvas screen -->
+    <div id="nes-container"></div>
 
     <div class="controls-info">
-        <p><strong>Controls:</strong> Arrow Keys = Move | Z = Pepper (A) | X = B Button | Enter = Start | Shift = Select</p>
+        <p><strong>Built-in Keyboard Controls:</strong></p>
+        <p>Arrow Keys = Move | X = A Button (Pepper) | Z = B Button | Enter = Start | Shift = Select</p>
     </div>
 
-    <!-- This must load AFTER the library script above has completed loading -->
+    <!-- Your external script executes right here at the very bottom -->
     <script src="rom-loader.js"></script>
 
 </body>
