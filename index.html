@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Burger Time</title>
+    <title>Retro NES Emulator - Burger Time</title>
     
-    <!-- 1. Load the core emulator engine from a public CDN hosted link -->
-    <script src="https://cloudflare.com"></script>
+    <!-- Load the stable emulator engine -->
+    <script type="text/javascript" src="https://unpkg.com"></script>
 
     <style>
-        /* Center the game screen neatly on the monitor */
         body {
             background-color: #222;
             color: white;
@@ -18,7 +17,6 @@
             margin: 0;
             padding: 20px;
         }
-        /* Style the virtual game monitor screen */
         #nes-canvas {
             border: 4px solid #444;
             box-shadow: 0 10px 25px rgba(0,0,0,0.5);
@@ -37,16 +35,14 @@
     <h1>NES Emulator</h1>
     <p>Click the screen below to focus controls before playing!</p>
 
-    <!-- 2. The screen element where the emulator draws the game frames -->
-    <!-- The native NES resolution is 256x240, styled here to display at 512x480 -->
+    <!-- The game screen canvas -->
     <canvas id="nes-canvas" width="256" height="240" style="width: 512px; height: 480px;"></canvas>
 
-    <!-- Instructions display for players visiting your site -->
     <div class="controls-info">
-        <p><strong>Controls:</strong> Arrow Keys = Move | Z = A Button | X = B Button | Enter = Start | Shift = Select</p>
+        <p><strong>Controls:</strong> Arrow Keys = Move | Z = Pepper (A) | X = B Button | Enter = Start | Shift = Select</p>
     </div>
 
-    <!-- 3. Load your custom connector script that holds the keyboard maps and ROM fetch code -->
+    <!-- Loads your custom keyboard and ROM loader logic -->
     <script src="rom-loader.js"></script>
 
 </body>
